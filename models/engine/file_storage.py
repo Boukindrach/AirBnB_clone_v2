@@ -44,7 +44,7 @@ class FileStorage:
         for key, value in self.__objects.items():
             if obj == value:
                 dict_key = key
-        if dict_key is not "":
+        if dict_key != "":
             del self.__objects[dict_key]
 
     def all(self, cls=None):
