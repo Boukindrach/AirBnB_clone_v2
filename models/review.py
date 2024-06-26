@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-""" Review module for the HBNB project """
+"""Review class."""
 from models.base_model import BaseModel
-from sqlalchemy import Column, String
+
 
 class Review(BaseModel):
-    """ Review classto store review information """
+    """Initialize Review instance."""
+
     place_id = ""
     user_id = ""
     text = ""
