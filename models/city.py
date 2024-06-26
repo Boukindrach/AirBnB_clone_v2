@@ -1,11 +1,15 @@
-#!/usr/bin/python3
-"""City class."""
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, ForeignKey, String
+from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship, backref
+from sqlalchemy.ext.declarative import declarative_base
 
-class City(BaseModel):
-    """ Initialize city instance."""
+Base = declarative_base()
+
+class City(Base):
     __tablename__ = 'cities'
     
-    state_id = Column(String(60), ForeignKey('states.id'),nullable=False)
+    id = Column(String(60), primary_key=True, nullable=False)
     name = Column(String(128), nullable=False)
+    
+    # Relationship with Place
+    places = relationship('Place', backref='cities', cascade='all, delete-orphan')
+
