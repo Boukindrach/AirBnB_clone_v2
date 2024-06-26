@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from models.base_model import BaseModel, Base
+from models.base_model import Base
 import os
 
 class DBStorage:
@@ -39,10 +38,9 @@ class DBStorage:
         """Delete from the current database session obj if not None"""
         if obj:
             self.__session.delete(obj)
-        
     def reload(self):
         """Create all tables in the database and initialize a new session"""
-        from models.base_model import BaseModel, Base
+        from models.base_model import Base
         from models.user import User
         from models.state import State
         from models.city import City
