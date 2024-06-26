@@ -3,10 +3,19 @@
 import models
 from uuid import uuid4
 from datetime import datetime
+import os
+import sqlalchemy
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
 
+Base = declarative_base()
 
 class BaseModel:
     """BaseModel class for other models to inherit from."""
+
+    id = Column(String(60), nullable = False, primary_key = True)
+    created_at = Column(DateTime, nullable = False, default = datetime.utcnow())
+    updated_at = Column(DateTime, nullable = False, default = datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
         """Initialize BaseModel instance."""

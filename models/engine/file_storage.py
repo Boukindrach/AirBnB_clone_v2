@@ -34,6 +34,37 @@ class FileStorage:
             serialized_objects[key] = obj.to_dict()
         with open(self.__file_path, "w") as f:
             json.dump(serialized_objects, f)
+    
+    def delete(self, obj=None):
+        """Deletes obj from __objecs if its inside
+        Not sure if it should also delete from json file
+        """
+
+        dict_key = ""
+        for key, value in self.__objects.items():
+            if obj == value:
+                dict_key = key
+        if dict_key is not "":
+            del self.__objects[dict_key]
+
+    def all(self, cls=None):
+        """returns a dictionary
+        Return:
+            returns a dictionary of __object
+        """
+        if cls is None:
+            return self.__objects
+        else:
+            new_dict = {}
+            if len(self.__objects) > 0:
+                for key, value in self.__objects.items():
+                    if type(cls) is str:
+                        if cls == key.split('.')[0]:
+                            new_dict[key] = value
+                    else:
+                        if cls is type(value):
+                            new_dict[key] = value
+            return new_dict
 
     def reload(self):
         """Deserialize the JSON file to objects, if it exists."""
