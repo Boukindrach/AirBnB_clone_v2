@@ -2,6 +2,7 @@
 """This is the city class"""
 from models.base_model import BaseModel, Base, Column, String, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy import Column, String
 
 
 class City(BaseModel, Base):
