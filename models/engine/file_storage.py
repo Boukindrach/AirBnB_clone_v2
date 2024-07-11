@@ -31,13 +31,13 @@ class FileStorage:
         else:
             new_dict = {}
             if len(self.__objects) > 0:
-                for key, value in self.__objects.items():
+                for k, v in self.__objects.items():
                     if type(cls) is str:
                         if cls == key.split('.')[0]:
-                            new_dict[key] = value
+                            new_dict[k] = v
                     else:
-                        if cls is type(value):
-                            new_dict[key] = value
+                        if cls is type(v):
+                            new_dict[k] = v
             return new_dict
 
     def new(self, obj):
