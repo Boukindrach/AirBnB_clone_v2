@@ -54,7 +54,8 @@ def number_odd_or_even(n=None):
             even_odd = "odd"
         else:
             even_oddo = "even"
-        return render_template("6-number_odd_or_even.html", n=n, even_odd=even_odd)
+        return render_template(
+                "6-number_odd_or_even.html", n=n, even_odd=even_odd)
 
 
 if __name__ == "__main__":
